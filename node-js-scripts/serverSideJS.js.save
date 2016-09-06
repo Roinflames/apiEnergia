@@ -1,0 +1,21 @@
+var sys = require("sys"),
+my_http = require("http");
+var serialport = require('serialport');
+var SerialPort = serialport.SerialPort;
+
+//Ubicacion de conexion arduino
+portName = '/dev/ttyUSB0';
+
+var port = new SerialPort(portName, function (err) {
+  port.on('data', function (data) {
+  console.log('Potencia medida en ' + port.name + ': ' + data);
+  });
+});
+
+my_http.createServer(function(request,response){
+	sys.puts("Peticion recibida.");
+	response.writeHeader(200, {"Content-Type": "text/plain"});
+	response.write(data);
+	response.end();
+}).listen(8080);
+sys.puts("Server Running on 8080");

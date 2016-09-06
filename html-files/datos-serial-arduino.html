@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Cosecha de datos Proyecto Energia</h1>
+
+<script type="text/javascript">
+	var serialport = require('serialport');
+	var SerialPort = serialport.SerialPort;
+
+	//Ubicacion de conexion arduino
+	portName = '/dev/ttyUSB0';
+
+	var port = new SerialPort(portName, function (err) {
+	  port.on('data', function (data) {
+	  console.log('Voltaje, corriente y potencia medidos en ' + portName + ': ' + data);
+	  });
+	});
+</script>>
+
+</body>
+</html> 

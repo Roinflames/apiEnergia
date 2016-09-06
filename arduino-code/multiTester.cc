@@ -80,7 +80,8 @@ void loop(){
   mensaje += floatToString(test,voltaje,2,6);
   mensaje += ",";
   mensaje += floatToString(test,corriente,2,6);
-  mensaje += ";";
+  mensaje += ",";
+  mensaje += floatToString(test,corriente*voltaje,2,6);
   Serial.println(mensaje);
   delay(800);
 }
